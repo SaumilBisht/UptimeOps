@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: region-config
+data:
+  india-region: "9a0511a5-731b-4892-8d70-4108baa29362"
+  us-region: "3b6ee783-3a33-47e8-86e4-3b5d6dd0336a"

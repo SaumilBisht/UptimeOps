@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker-deployment
+  name: worker-india
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: worker
+      app: worker-india
   template:
     metadata:
       labels:
-        app: worker
+        app: worker-india
     spec:
       containers:
         - name: worker
@@ -20,7 +20,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: region-config
-                  key: region_id
+                  key: india-region
             - name: WORKER_ID
               valueFrom:
                 fieldRef:
@@ -28,3 +28,35 @@ spec:
           envFrom:
             - secretRef:
                 name: uptime-secrets
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-us
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-us
+  template:
+    metadata:
+      labels:
+        app: worker-us
+    spec:
+      containers:
+        - name: worker
+          image: saumilbisht/buptime-worker:latest
+          env:
+            - name: REGION_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: region-config
+                  key: us-region
+            - name: WORKER_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          envFrom:
+            - secretRef:
+                name: uptime-secrets
+---
