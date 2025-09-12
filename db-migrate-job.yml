@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migrate-seed
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrate
+          image: saumilbisht/buptime-api:latest
+          command:
+            - sh
+            - -c
+            - |
+              cd packages/db \
+              && bunx prisma migrate deploy --schema=prisma/schema.prisma \
+              && bun run seed
+          envFrom:
+            - secretRef:
+                name: uptime-secrets
