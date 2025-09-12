@@ -13,5 +13,18 @@ spec:
         app: worker
     spec:
       containers:
-      - name: worker
-        image: saumilbisht/buptime-worker:latest
+        - name: worker
+          image: saumilbisht/buptime-worker:latest
+          env:
+            - name: REGION_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: region-config
+                  key: region_id
+            - name: WORKER_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          envFrom:
+            - secretRef:
+                name: uptime-secrets

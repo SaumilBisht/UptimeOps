@@ -13,7 +13,22 @@ spec:
         app: api
     spec:
       containers:
-      - name: api
-        image: saumilbisht/buptime-api:latest
-        ports:
-        - containerPort: 3001
+        - name: api
+          image: saumilbisht/buptime-api:latest  
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - secretRef:
+                name: uptime-secrets 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+spec:
+  selector:
+    app: api
+  ports:
+    - port: 80
+      targetPort: 3001
+  type: ClusterIP
