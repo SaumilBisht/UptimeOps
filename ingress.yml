@@ -3,9 +3,13 @@ kind: Ingress
 metadata:
   name: uptime-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
-  ingressClassName: nginx
+  tls:
+    - hosts:
+        - uptime.saumilbisht.in
+      secretName: uptime-tls
   rules:
     - host: uptime.saumilbisht.in
       http:
