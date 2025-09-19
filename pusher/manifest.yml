@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: pusher
-          image: saumilbisht/buptime-pusher:latest
+          image: saumilbisht/buptime-pusher:6e9fe32d04432b8d39a454180e38cdb89ae8a822
           envFrom:
             - secretRef:
                 name: uptime-secrets

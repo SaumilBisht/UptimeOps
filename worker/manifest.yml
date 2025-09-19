@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: saumilbisht/buptime-worker:latest
+          image: saumilbisht/buptime-worker:6e9fe32d04432b8d39a454180e38cdb89ae8a822
           env:
             - name: REGION_ID
               valueFrom:
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: worker
-          image: saumilbisht/buptime-worker:latest
+          image: saumilbisht/buptime-worker:6e9fe32d04432b8d39a454180e38cdb89ae8a822
           env:
             - name: REGION_ID
               valueFrom:
