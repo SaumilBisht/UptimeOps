@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: saumilbisht/buptime-api:56d46eb0de74c8f03f87c74d5b72bebf4746d703
+          image: saumilbisht/buptime-api:6e9fe32d04432b8d39a454180e38cdb89ae8a822
           ports:
             - containerPort: 3001
           envFrom:
