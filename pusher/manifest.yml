@@ -18,3 +18,4 @@ spec:
           envFrom:
             - secretRef:
                 name: uptime-secrets
+#check redeployment
